@@ -45,11 +45,11 @@ typedef struct instruction_s
 /**
  * struct variables - global variables to be used.
  * @lineptr: lineptr for getline.
- * @line_number: returns what line_number is getline reading.
+ * @num_line: returns what line_number is getline reading.
  * @value: string vuale of second argument in file.
- * @int_val: convering value to int.
- * @cmd: string value of first argument in file.
- * @ret_val: return vuale for main file.
+ * @value_int: convering value to int.
+ * @comand: string value of first argument in file.
+ * @ret_fun: return vuale for main file.
  * @flag: always successful.
  */
 
@@ -58,17 +58,24 @@ typedef struct variables {
 	char *value;
 	int value_int;
 	char *command;
+	int ret_fun;
 }var_t;
 
 extern var_t st_var;
 
-/* prototypes */
 void op_push(stack_t **stack, unsigned int line_number);
 void op_pall(stack_t **stack, unsigned int line_number);
+void op_pint(stack_t **stack, unsigned int line_number);
+void op_pop(stack_t **stack, unsigned int line_number);
+void op_swap(stack_t **stack, unsigned int line_number);
+void op_add(stack_t **stack, unsigned int line_number);
+void op_nop(stack_t **stack, unsigned int line_number);
+void op_sub(stack_t **stack, unsigned int line_number);
+void op_div(stack_t **stack, unsigned int line_number);
 
 
-/* helper */
-void free_l(stack_t *head);
+
+void free_list(stack_t *head);
 int get_op(stack_t **head);
 int tokenizer(char *str);
 #endif

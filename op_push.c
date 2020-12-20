@@ -6,7 +6,11 @@ void op_push(stack_t **head, unsigned int line_number)
 
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
+	{
+		fprintf(stdout, "Error: malloc failed");
+		st_var.ret_fun = -1;
 		return;
+	}
 
 	new->n = st_var.value_int;
 	new->prev = NULL;
@@ -19,5 +23,7 @@ void op_push(stack_t **head, unsigned int line_number)
 	if (new->next != NULL)
 		new->next->prev = new;
 	*head = new;
+
+	(void)line_number;
 
 }

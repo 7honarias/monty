@@ -10,6 +10,15 @@
 void op_push(stack_t **head, unsigned int line_number)
 {
 	stack_t *new = NULL;
+	int val_check;
+
+	if ((val_check = check_int(st_var.value)) != 1)
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		st_var.ret_fun = -1;
+	}
+
+
 
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
@@ -33,4 +42,28 @@ void op_push(stack_t **head, unsigned int line_number)
 
 	(void)line_number;
 
+}
+
+/**
+ * check_int - verific if is int
+ * 
+ * Return: 1 if success else -1
+ */
+
+int check_int(char *str)
+{
+	int i = 0;
+
+	if (str[i] == '-')
+		i++;
+	
+	while (str[i])
+	{
+		if (str[i] < 48 || str[i] > 57)
+		{
+			return (-1);
+		}
+		i++;
+	}
+	return(1);
 }

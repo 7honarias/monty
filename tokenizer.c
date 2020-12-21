@@ -1,5 +1,11 @@
 #include "monty.h"
 
+/**
+ * tokenizer - is a funciton for div the line
+ * @str: string of line
+ * Return: 1 if is success
+ */
+
 int tokenizer(char *str)
 {
 	st_var.command = strtok(str, "\t\n\r ");

@@ -15,7 +15,7 @@ void op_swap(stack_t **stack, unsigned int line_number)
 
 	if (len < 2 || stack == NULL || *stack == NULL)
 	{
-		fprintf(stdout, "L%d: can't swap, stack too short\n",
+		fprintf(stderr, "L%d: can't swap, stack too short\n",
 			line_number);
 		gvars.ret_val = -1;
 		return;

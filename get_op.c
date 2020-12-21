@@ -31,7 +31,7 @@ int find_op(stack_t **head)
 		}
 		i++;
 	}
-	fprintf(stdout, "L%d: unknown instruction %s\n",
+	fprintf(stderr, "L%d: unknown instruction %s\n",
 		gvars.line_number, gvars.cmd);
 	gvars.ret_val = -1;
 	return (-1);

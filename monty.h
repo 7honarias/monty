@@ -64,6 +64,8 @@ typedef struct variables
 
 extern var_t st_var;
 
+var_t st_var;
+
 void op_push(stack_t **stack, unsigned int line_number);
 void op_pall(stack_t **stack, unsigned int line_number);
 void op_pint(stack_t **stack, unsigned int line_number);
@@ -77,6 +79,7 @@ void op_div(stack_t **stack, unsigned int line_number);
 
 
 void free_list(stack_t *head);
+int check_int(char *str);
 int get_op(stack_t **head);
 int tokenizer(char *str);
 #endif

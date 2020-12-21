@@ -1,6 +1,5 @@
 #include "monty.h"
 
-var_t st_var;
 
 /**
  * main - function main of proyect

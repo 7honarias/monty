@@ -82,5 +82,5 @@ void free_list(stack_t *head);
 int check_int(char *str);
 int get_op(stack_t **head);
 int tokenizer(char *str);
-int tokenizer(char *str);
+int newline_check(char *str);
 #endif

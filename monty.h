@@ -8,6 +8,8 @@
 #include <string.h>
 #include <unistd.h>
 #include <fcntl.h>
+#define UNUSED(x) (void)(x)
+#define delim "\n\r\t "
 
 
 /**

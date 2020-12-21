@@ -1,24 +1,23 @@
 #include "monty.h"
 
 /**
- * tokenizer - is a funciton for div the line
- * @str: string of line
- * Return: 1 if is success
+ * tokenizer - create tokens for command and value
+ * @str: takes a string
+ * Return: 1 on success
  */
-
 int tokenizer(char *str)
 {
-
 	if (newline_check(str) == 1)
 		return (-1);
 
-	st_var.command = strtok(str, "\t\n\r ");
-	st_var.value = strtok(NULL, "\t\n\r ");
-
-	if (st_var.value != NULL)
+	st_var.command = strtok(str, delim);
+	if (st_var.command[0] == '#')
+		return (-1);
+	if (st_var.command[0] != '\0')
 	{
-		st_var.value_int = atoi(st_var.value);
-
+		st_var.value = strtok(NULL, delim);
+		if (st_var.value != NULL)
+			st_var.value_int = atoi(st_var.value);
 	}
 	return (1);
 }

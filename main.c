@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 {
 	stack_t *head = NULL;
 	FILE *p_file;
-	int read;
+	int read = 0;
 	char *line = NULL;
 	size_t len;
 	int ret_token;

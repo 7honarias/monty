@@ -38,9 +38,6 @@ void op_push(stack_t **head, unsigned int line_number)
 	if (new->next != NULL)
 		new->next->prev = new;
 	*head = new;
-
-	(void)line_number;
-
 }
 
 /**

@@ -1,18 +1,17 @@
 #include "monty.h"
-/**
- * free_list - free list in the end
- * @head: head of list
- * Return: Nothing
- */
 
-void free_list(stack_t *head)
+/**
+ * free_l - frees node
+ * @head: pointer to first node.
+ */
+void free_l(stack_t *head)
 {
-	stack_t *temp = NULL;
+	stack_t *current;
 
 	while (head)
 	{
-		temp = head;
+		current = head;
 		head = head->next;
-		free(temp);
+		free(current);
 	}
 }

@@ -1,69 +1,37 @@
 #include "monty.h"
 
 /**
- * op_push - push new node
- * @head: head of list
- * @line_number: line number
- * Return: Nothing
+ * op_push - push value to stack
+ * @stack: pointer to stack
+ * @line_number: unused
  */
-
-
-void op_push(stack_t **head, unsigned int line_number)
+void op_push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new = NULL;
-	int val_check;
+	stack_t *new = malloc(sizeof(stack_t));
 
-	val_check = check_int(st_var.value);
-	if (val_check != 1 || (st_var.value == NULL))
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		st_var.ret_fun = -1;
-	}
-	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
-		fprintf(stderr, "Error: malloc failed\n");
-		st_var.ret_fun = -1;
+		fprintf(stdout, "Error: malloc failed\n");
+		gvars.ret_val = -1;
+		return;
+	}
+	if (gvars.value == NULL || check_val(gvars.value) == -1)
+	{
+		fprintf(stdout, "L%d: usage: push integer\n", line_number);
+		free(new);
+		gvars.ret_val = -1;
 		return;
 	}
 
-	new->n = st_var.value_int;
+	gvars.int_val = atoi(gvars.value);
+	new->n = gvars.int_val;
 	new->prev = NULL;
-	if (*head == NULL)
+
+	if (*stack == NULL)
 		new->next = NULL;
 	else
-	{
-		new->next = *head;
-	}
+		new->next = *stack;
 	if (new->next != NULL)
 		new->next->prev = new;
-	*head = new;
-}
-
-/**
- * check_int - verific if is int
- * @str: string value
- * Return: 1 if success else -1
- */
-
-int check_int(char *str)
-{
-	int i = 0;
-
-	if (str == NULL)
-	{
-		return (-1);
-	}
-	if (str[i] == '-')
-		i++;
-
-	while (str[i])
-	{
-		if (str[i] < 48 || str[i] > 57)
-		{
-			return (-1);
-		}
-		i++;
-	}
-	return (1);
+	*stack = new;
 }

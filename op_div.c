@@ -1,34 +1,36 @@
 #include "monty.h"
-
 /**
- * op_div - div the top of list
- * @head: head of list
- * @line_number: line number
- * Return: Nothing
+ * op_div - function to subtract top two elements of a stack
+ * @stack: double pointer of stack_t type to head of stack
+ * @line_number: unsigned int type
+ * Return: stack with new node and removed node
+ *
  */
-
-void op_div(stack_t **head, unsigned int line_number)
+void op_div(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp = NULL;
-	int i;
+	stack_t *temp = *stack;
+	int len = 0;
 
-	if (*head == NULL || (*head)->next == NULL)
+	len = list_len(stack);
+	if (len < 2 || stack == NULL || *stack == NULL)
 	{
-		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
-		st_var.ret_fun = -1;
+		fprintf(stdout, "L%d: can't div, stack too short\n",
+			line_number);
+		gvars.ret_val = -1;
 		return;
 	}
-	if ((*head)->n == 0)
+	if ((*stack)->n == 0)
 	{
-		fprintf(stderr, "L%d: division by zero\n", line_number);
-		st_var.ret_fun = -1;
+		fprintf(stdout, "L%d: division by zero\n",
+			line_number);
+		gvars.ret_val = -1;
 		return;
 	}
-	temp = *head;
-	i = temp->n;
-	*head = (*head)->next;
-	i /= (*head)->n;
-	(*head)->prev = NULL;
-	(*head)->n = i;
-	free(temp);
+	else
+	{
+		temp->next->n /= (*stack)->n;
+		*stack = (*stack)->next;
+		free(temp);
+		(*stack)->prev = NULL;
+	}
 }

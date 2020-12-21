@@ -1,52 +1,50 @@
 #include "monty.h"
 
 /**
- * main - function main of proyect
- * @argc: number of argv
- * @argv: arguments
- * Return: always 0 but if fail EXITFAILURE
+ * main - runs monty interpreter
+ * @argc: argument count
+ * @argv: argument vector
+ * Return: return -1 if failed, else 1
  */
-
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
+	FILE *fp;
 	stack_t *head = NULL;
-	FILE *p_file;
-	int read = 0;
-	char *line = NULL;
-	size_t len;
-	int ret_token;
+	ssize_t read = 0;
+	size_t len = 0;
+	int token_ret = 0;
 
-	st_var.ret_fun = 1;
-	st_var.num_line = 0;
+	gvars.lineptr = NULL;
+	gvars.line_number = 0;
 	if (argc != 2)
 	{
-		fprintf(stderr, "USAGE: monty file\n");
+		fprintf(stdout, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	p_file = fopen(argv[1], "r");
-	if (p_file == NULL)
+	fp = fopen(argv[1], "r");
+	if (fp == NULL)
 	{
-		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		fprintf(stdout, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	while ((read = getline(&line, &len, p_file)) != -1)
+	while ((read = getline(&gvars.lineptr, &len, fp)) != -1)
 	{
-		st_var.num_line++;
-		ret_token = tokenizer(line);
-		if (ret_token != -1)
+		gvars.line_number++;
+		token_ret = tokenizer(gvars.lineptr);
+		if (token_ret != -1)
 		{
-			get_op(&head);
-			if (st_var.ret_fun == -1)
+			find_op(&head);
+			if (gvars.ret_val == -1)
 			{
-				free_list(head);
-				free(line);
-				fclose(p_file);
+				free(gvars.lineptr);
+				free_l(head);
+				fclose(fp);
 				exit(EXIT_FAILURE);
 			}
 		}
 	}
-	free(line);
-	free_list(head);
-	fclose(p_file);
-	exit(EXIT_SUCCESS);
+	free(gvars.lineptr);
+	free_l(head);
+	fclose(fp);
+	return (gvars.ret_val);
 }

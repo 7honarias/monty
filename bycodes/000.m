@@ -1,4 +1,4 @@
-   push     0
+push 
 
 
 push   0

@@ -22,7 +22,7 @@ void op_push(stack_t **head, unsigned int line_number)
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
-		fprintf(stdout, "Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		st_var.ret_fun = -1;
 		return;
 	}

@@ -2,6 +2,13 @@
 
 var_t st_var;
 
+/**
+ * main - function main of proyect
+ * @argc: number of argv
+ * @argv: arguments
+ * Return: always 0 but if fail EXITFAILURE
+ */
+
 int main(int argc, char *argv[])
 {
 	stack_t *head = NULL;
@@ -38,11 +45,8 @@ int main(int argc, char *argv[])
 				fclose(p_file);
 				exit(EXIT_FAILURE);
 			}
-
 		}
 	}
-	free(line);
-	free_list(head);
-	fclose(p_file);
+	free(line); free_list(head); close(p_file);
 	return (0);
 }

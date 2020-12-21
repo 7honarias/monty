@@ -1,5 +1,11 @@
 #include "monty.h"
 
+/**
+ * get_op - define function to use
+ * @head: pointer head list
+ * Return: 1 if success else -1
+ */
+
 int get_op(stack_t **head)
 {
 	instruction_t functions[] = {
@@ -25,7 +31,8 @@ int get_op(stack_t **head)
 		}
 		i++;
 	}
-	fprintf(stdout, "L%d: unknown instruction %s\n", st_var.num_line, st_var.command);
+	fprintf(stdout, "L%d: unknown instruction %s\n",
+		 st_var.num_line, st_var.command);
 	st_var.ret_fun = -1;
 	return (-1);
 }

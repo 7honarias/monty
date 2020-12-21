@@ -53,13 +53,14 @@ typedef struct instruction_s
  * @flag: always successful.
  */
 
-typedef struct variables {
+typedef struct variables
+{
 	int num_line;
 	char *value;
 	int value_int;
 	char *command;
 	int ret_fun;
-}var_t;
+} var_t;
 
 extern var_t st_var;
 

@@ -1,5 +1,12 @@
 #include "monty.h"
 
+/**
+ * op_push - push new node
+ * @head: head of list
+ * @line_number: line number
+ * Return: Nothing
+ */
+
 void op_push(stack_t **head, unsigned int line_number)
 {
 	stack_t *new = NULL;

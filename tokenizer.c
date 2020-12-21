@@ -9,6 +9,8 @@
 int tokenizer(char *str)
 {
 	st_var.command = strtok(str, "\t\n\r ");
+	if (st_var.command == NULL)
+		return (-1);
 	st_var.value = strtok(NULL, "\t\n\r ");
 
 	if (st_var.value != NULL)

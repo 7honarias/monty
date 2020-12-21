@@ -16,13 +16,14 @@ void op_push(stack_t **head, unsigned int line_number)
 	val_check = check_int(st_var.value);
 	if (val_check != 1 || (st_var.value == NULL))
 	{
+		printf("hola");
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		st_var.ret_fun = -1;
 	}
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
-		fprintf(stdout, "Error: malloc failed");
+		fprintf(stdout, "Error: malloc failed\n");
 		st_var.ret_fun = -1;
 		return;
 	}
@@ -53,6 +54,10 @@ int check_int(char *str)
 {
 	int i = 0;
 
+	if (str == NULL)
+	{
+		return (-1);
+	}
 	if (str[i] == '-')
 		i++;
 

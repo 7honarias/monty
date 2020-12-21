@@ -1,6 +1,5 @@
 #include "monty.h"
 
-
 /**
  * main - function main of proyect
  * @argc: number of argv

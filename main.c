@@ -48,5 +48,5 @@ int main(int argc, char *argv[])
 	free(line);
 	free_list(head);
 	fclose(p_file);
-	exit (EXIT_SUCCESS);
+	exit(EXIT_SUCCESS);
 }

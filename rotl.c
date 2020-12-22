@@ -17,8 +17,6 @@ void op_rotl(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 		temp = *stack;
 		run = *stack;
 		*stack = (*stack)->next;
-		(*stack)->prev = NULL;
-
 		while (run->next)
 		{
 			run = run->next;
@@ -26,5 +24,6 @@ void op_rotl(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 		run->next = temp;
 		temp->prev = run;
 		temp->next = NULL;
+		(*stack)->prev = NULL;
 	}
 }

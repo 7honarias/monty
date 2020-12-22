@@ -14,14 +14,14 @@ void op_div(stack_t **stack, unsigned int line_number)
 	len = list_len(stack);
 	if (len < 2 || stack == NULL || *stack == NULL)
 	{
-		fprintf(stdout, "L%d: can't div, stack too short\n",
+		fprintf(stderr, "L%d: can't div, stack too short\n",
 			line_number);
 		gvars.ret_val = -1;
 		return;
 	}
 	if ((*stack)->n == 0)
 	{
-		fprintf(stdout, "L%d: division by zero\n",
+		fprintf(stderr, "L%d: division by zero\n",
 			line_number);
 		gvars.ret_val = -1;
 		return;

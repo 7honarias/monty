@@ -9,20 +9,19 @@
 
 void op_rotr(stack_t **stack, __attribute__((unused))unsigned int line_number)
 {
-	stack_t *temp;
+	int len = 0;
+	stack_t *temp, *run;
 
-	if (*stack)
-	{
-		temp = *stack;
-		while ((*stack)->next)
-		{
-			(*stack) = (*stack)->next;
-		}
-		(*stack)->next = temp->next;
-		temp->prev = (*stack)->prev;
-		temp->next->prev = *stack;
-		temp->prev->next = temp;
-		temp->next = NULL;
-		(*stack)->prev = NULL;
-	}
+	len = list_len(stack);
+	if (len < 2)
+		return;
+	run = *stack;
+	temp = *stack;
+	while (run->next)
+		run = run->next;
+	run->prev->next = NULL;
+	run->next = temp;
+	temp->prev = run;
+	run->prev = NULL;
+	*stack = run;
 }

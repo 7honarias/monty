@@ -9,21 +9,19 @@
 
 void op_rotl(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
-	stack_t *temp;
-	stack_t *run;
+	stack_t *temp, *run;
 
 	if (*stack)
 	{
-		temp = *stack;
 		run = *stack;
-		*stack = (*stack)->next;
-		while (run->next)
-		{
-			run = run->next;
-		}
-		run->next = temp;
-		temp->prev = run;
-		temp->next = NULL;
-		(*stack)->prev = NULL;
+	while (run->next)
+		run = run->next;
+
+	temp = *stack;
+	*stack = temp->next;
+	(*stack)->prev = NULL;
+	temp->next = NULL;
+	temp->prev = run;
+	run->next = temp;
 	}
 }

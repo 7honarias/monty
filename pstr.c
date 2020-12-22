@@ -1,9 +1,10 @@
 #include "monty.h"
 
 /**
- * 
- * 
- * 
+ * op_pstr - print string
+ * @stack: head of the list
+ * @line_number: line number
+ * Return: Nothing
  */
 
 void op_pstr(stack_t **stack, __attribute__((unused))unsigned int line_number)

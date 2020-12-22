@@ -24,6 +24,7 @@ int find_op(stack_t **head)
 		{"mod", op_mod},
 		{"pchar", op_pchar},
 		{"pstr", op_pstr},
+		{"rotl", op_rotl},
 		{NULL, NULL}
 	};
 	if (gvars.cmd[0] == '#')

@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * pchar - print char of list
+ * op_pchar - print char of list
  * @stack: head of list
  * @line_number: line number
  * Return: Nothing

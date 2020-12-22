@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * op_mul - function to add top two elements of a stack
+ * op_mul - function to mult top two elements of a stack
  * @stack: double pointer of stack_t type to head of stack
  * @line_number: unsigned int type
  * Return: stack with new sum and removed node

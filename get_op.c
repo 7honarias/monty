@@ -21,8 +21,12 @@ int find_op(stack_t **head)
 		{"nop", op_nop},
 		{"sub", op_sub},
 		{"div", op_div},
+		{"mod", op_mod},
+		{"pchar", op_pchar},
 		{NULL, NULL}
 	};
+	if (gvars.cmd[0] == '#')
+		return (1);
 
 	while (f_ope[i].opcode != NULL)
 	{
